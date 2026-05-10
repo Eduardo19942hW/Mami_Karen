@@ -7,6 +7,7 @@ const bgMusic = document.getElementById("bgMusic");
 const musicToggle = document.getElementById("musicToggle");
 const carouselImage = document.getElementById("carouselImage");
 const photoCounter = document.getElementById("photoCounter");
+let musicStarted = false;
 
 function showScreen(index) {
   screens.forEach((screen) => screen.classList.remove("active"));
@@ -27,8 +28,6 @@ function showScreen(index) {
 }
 
 function startExperience() {
-  bgMusic.play();
-  musicToggle.textContent = "⏸️";
   nextScreen();
 }
 
@@ -114,6 +113,13 @@ window.addEventListener("load", () => {
 
     setTimeout(() => {
       loader.style.display = "none";
+
+      // Iniciar el efecto de escritura en la primera pantalla
+      const typeElement = document.querySelector(".screen.active .type-text");
+      if (typeElement) {
+        typeWriter(typeElement);
+      }
+
     }, 1000);
 
   }, 2500);
@@ -316,3 +322,46 @@ function createMagicParticle() {
 }
 
 setInterval(createMagicParticle, 180);
+
+/* CONTROL AUDIO + VIDEO */
+
+const specialVideo = document.getElementById("specialVideo");
+let musicWasPlayingBeforeVideo = false;
+
+if (specialVideo) {
+  specialVideo.addEventListener("play", () => {
+    musicWasPlayingBeforeVideo = !bgMusic.paused;
+
+    bgMusic.pause(); // pausa donde iba, no reinicia
+    musicToggle.textContent = "🎵";
+  });
+
+  specialVideo.addEventListener("pause", () => {
+    if (musicWasPlayingBeforeVideo && currentScreen === 3) {
+      bgMusic.play(); // continúa desde donde quedó
+      musicToggle.textContent = "⏸️";
+    }
+  });
+
+  specialVideo.addEventListener("ended", () => {
+    if (musicWasPlayingBeforeVideo) {
+      bgMusic.play(); // continúa desde donde quedó
+      musicToggle.textContent = "⏸️";
+    }
+  });
+}
+
+/* AUTO START MUSIC */
+
+document.addEventListener("click", () => {
+
+  if (!musicStarted) {
+
+    bgMusic.play();
+
+    musicToggle.textContent = "⏸️";
+
+    musicStarted = true;
+  }
+
+}, { once: true });
