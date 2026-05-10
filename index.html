@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Para Mami Karen 💖</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+
+    <div class="loader-content">
+      <div class="heart">💖</div>
+
+      <h1>Cargando recuerdos mágicos...</h1>
+
+      <p>
+        Preparando una sorpresa especial ✨
+      </p>
+    </div>
+
+  </div>
+  <div class="floating-bg"></div>
+
+  <audio id="bgMusic" loop>
+    <source src="assets/audio/musica.mp3" type="audio/mp3" />
+  </audio>
+
+  <main class="app">
+
+    <div class="progress-bar">
+  <div id="progressFill"></div>
+</div>
+
+    <!-- PANTALLA 1 -->
+    <section class="screen active">
+      <div class="content">
+        <p class="tag">Una sorpresa hecha con mucho amor ✨</p>
+        <h1>Para Mami Karen 💖</h1>
+        <p class="message type-text" data-text="Hoy queremos regalarte un pequeño viaje por nuestros momentos más bonitos."></p>
+
+        <button class="btn" onclick="startExperience()">
+          Abrir sorpresa 🌸
+        </button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 2 -->
+    <section class="screen">
+      <div class="content">
+        <h2>Gracias por tanto amor 💌</h2>
+        <p class="message">
+          Gracias por cada abrazo, cada sonrisa, cada cuidado y cada momento en el que haces que todo se sienta más bonito.
+        </p>
+
+        <button class="btn" onclick="nextScreen()">
+          Ver recuerdos 📸
+        </button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 3 -->
+    <section class="screen">
+      <div class="content wide">
+        <h2>Nuestros recuerdos favoritos 📸</h2>
+
+        <div class="carousel">
+          <img id="carouselImage" src="assets/fotos/foto1.jpg" alt="Recuerdo especial" />
+        </div>
+
+        <div class="carousel-controls">
+          <button class="small-btn" onclick="prevPhoto()">←</button>
+          <span id="photoCounter">1 / 18</span>
+          <button class="small-btn" onclick="nextPhoto()">→</button>
+        </div>
+
+        <button class="btn" onclick="nextScreen()">
+          Ver video especial 🎥
+        </button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 4 -->
+    <section class="screen">
+      <div class="content wide">
+        <h2>Un videito especial 🎥</h2>
+
+        <div class="video-box">
+          <video controls>
+            <source src="assets/videos/video.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <button class="btn" onclick="nextScreen()">
+          Mensaje final 💕
+        </button>
+      </div>
+    </section>
+
+    <!-- PANTALLA 5 -->
+    <section class="screen">
+      <div class="content final-screen">
+
+  <div class="big-heart">💖</div>
+
+  <h2 class="final-title">
+    Te queremos muchísimo
+  </h2>
+
+  <p class="message type-text"
+    data-text="Esta sorpresa está hecha con muchísimo amor, recuerdos felices y gratitud infinita. Gracias por ser una mami maravillosa 🌸✨">
+  </p>
+
+  <div class="final-glow"></div>
+
+  <button class="btn" onclick="restartExperience()">
+    Ver otra vez ✨
+  </button>
+
+</div>
+    </section>
+
+  </main>
+
+  <button id="musicToggle" class="music-toggle" onclick="toggleMusic()">
+    🎵
+  </button>
+<!-- MODAL FOTO FULLSCREEN -->
+<div id="photoModal" class="photo-modal" onclick="closePhotoModal()">
+  <button class="close-modal">×</button>
+  <img id="modalImage" src="" alt="Foto ampliada" />
+</div>
+  <script src="script.js"></script>
+</body>
+</html>
