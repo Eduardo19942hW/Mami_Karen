@@ -93,6 +93,8 @@ body {
 .content {
   width: 100%;
   max-width: 620px;
+  position: relative;
+  z-index: 5;
   padding: 34px 28px;
   border-radius: 34px;
   background: rgba(255, 255, 255, 0.34);
@@ -495,6 +497,7 @@ h2 {
 .final-screen {
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .big-heart {
@@ -517,6 +520,7 @@ h2 {
   position: absolute;
   width: 500px;
   height: 500px;
+
   background: radial-gradient(
     circle,
     rgba(255, 105, 180, 0.25),
@@ -526,7 +530,10 @@ h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
+
+  z-index: 1;
+  pointer-events: none;
+
   animation: glowMove 6s infinite alternate;
 }
 
@@ -648,4 +655,27 @@ h2 {
   .final-screen .btn {
     margin-top: 10px;
   }
+}
+
+.final-screen {
+  position: relative;
+}
+
+.final-screen .big-heart,
+.final-screen .final-title,
+.final-screen .final-message,
+.final-screen .btn {
+  position: relative;
+  z-index: 20;
+}
+
+.final-glow {
+  pointer-events: none;
+  z-index: 0;
+}
+
+.final-message {
+  position: relative;
+  z-index: 50;
+  color: #4f3b57;
 }

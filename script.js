@@ -183,13 +183,13 @@ function typeWriter(element) {
 
   if (!text.trim()) return;
 
-  element.textContent = "";
+  element.innerHTML = "";
   element.classList.add("typing");
 
   let i = 0;
 
   const interval = setInterval(() => {
-    element.textContent += text.charAt(i);
+    element.innerHTML += text.charAt(i);
     i++;
 
     if (i >= text.length) {
