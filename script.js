@@ -179,7 +179,10 @@ function closePhotoModal() {
 }
 
 function typeWriter(element) {
-  const text = element.dataset.text;
+  const text = element.dataset.text || element.textContent || "";
+
+  if (!text.trim()) return;
+
   element.textContent = "";
   element.classList.add("typing");
 
@@ -193,7 +196,7 @@ function typeWriter(element) {
       clearInterval(interval);
       element.classList.remove("typing");
     }
-  }, 45);
+  }, 35);
 }
 
 /* CONFETTI FINAL */

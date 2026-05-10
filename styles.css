@@ -234,11 +234,24 @@ h2 {
 /* RESPONSIVE */
 @media (max-width: 768px) {
   body {
-    overflow-y: hidden;
+    overflow-y: auto;
+  }
+
+  .app {
+    min-height: 100vh;
+    height: auto;
+  }
+
+  .screen {
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
   }
 
   .content {
     padding: 28px 22px;
+    max-height: 88vh;
+    overflow-y: auto;
   }
 
   h1 {
@@ -602,5 +615,37 @@ h2 {
 
   .final-title {
     font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .final-screen {
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 24px 20px;
+  }
+
+  .big-heart {
+    font-size: 4.2rem;
+    margin-bottom: 12px;
+  }
+
+  .final-title {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .final-screen .message {
+    font-size: 1rem;
+    line-height: 1.45;
+    margin-bottom: 20px;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .final-screen .btn {
+    margin-top: 10px;
   }
 }
