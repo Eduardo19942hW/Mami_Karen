@@ -53,6 +53,9 @@ function restartExperience() {
   currentPhoto = 1;
   updatePhoto();
   showScreen(currentScreen);
+  document.querySelectorAll(".type-text").forEach(el => {
+  el.dataset.written = "";
+});
 }
 
 function updatePhoto() {
@@ -95,10 +98,12 @@ function toggleMusic() {
   }
 }
 
-setInterval(() => {
+let carouselInterval = setInterval(() => {
+
   if (currentScreen === 2) {
     nextPhoto();
   }
+
 }, 3500);
 
 /* LOADER */
@@ -116,9 +121,10 @@ window.addEventListener("load", () => {
 
       // Iniciar el efecto de escritura en la primera pantalla
       const typeElement = document.querySelector(".screen.active .type-text");
-      if (typeElement) {
-        typeWriter(typeElement);
-      }
+      if (typeElement && !typeElement.dataset.written) {
+  typeWriter(typeElement);
+  typeElement.dataset.written = "true";
+}
 
     }, 1000);
 
@@ -145,7 +151,7 @@ function createFloatingHeart() {
   }, 5000);
 }
 
-setInterval(createFloatingHeart, 700);
+setInterval(createFloatingHeart, 1200);
 
 /* EFECTO EXTRA EN BOTONES */
 
@@ -189,7 +195,7 @@ function typeWriter(element) {
   let i = 0;
 
   const interval = setInterval(() => {
-    element.innerHTML += text.charAt(i);
+    element.textContent += text.charAt(i);
     i++;
 
     if (i >= text.length) {
@@ -324,7 +330,7 @@ function createMagicParticle() {
   }, 9000);
 }
 
-setInterval(createMagicParticle, 180);
+setInterval(createMagicParticle, 400);
 
 /* CONTROL AUDIO + VIDEO */
 
